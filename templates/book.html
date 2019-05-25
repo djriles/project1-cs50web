@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {% for book in books %}
+    {{books.title}} by {{books.author}}
+  {% endfor%}
+{% endblock %}
+
+{% block body %}
+  {% if session.log %}
+    {% for book in books %}
+<br>
+<div class='container bg-light row no-gutters'>
+    <h1 class='container bg-dark text-white text-center my-2'>{{books.title}}</h1>
+    <div class='col'>
+        Author:<h2> {{books.author}}</h2>
+        Year:<h2> {{books.year}}</h2>
+        ISBN:<h2> {{books.isbn}}</h2>
+    </div>
+    <div class='col text-center bg-info my-2'>
+        <h2 class=''>Goodread.com rating: </h2>
+        <h1>{{average_rating}}</h1>
+        <h5 class=''>Reviews received: </h5>
+        <h3>{{work_ratings_count}}</h3>
+    </div>
+
+</div>
+  {% if reviews != None %}
+    {% for review in reviews %}
+<div class='container bg-light my-3 '>
+    <h6>Rating: {{review.rating}} of 5</h6>
+    <blockquote class="blockquote">
+    <p>{{review.review}}</p>
+    <footer class="blockquote-footer">{{review.user_name}}</footer>
+    </blockquote>
+</div>
+    {% endfor %}
+  {% endif %}
+<div class="container bg-light my-2">
+    <form class="form-group" action="{{url_for("book", isbn = books.isbn)}}" method="POST">
+        <label class="text-danger">Write your review...</label>
+        <select name="rating" class="m-1" required>
+            <option selected value disabled> -- select rating -- </option>
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
+        </select>
+
+        <textarea class="form-control" name="comment"></textarea>
+
+        <input class="my-2" type="submit" value="Send review">
+    </form>
+</div>
+<div class="bg-light text-center"><a href="/api/{{books.isbn}}">API</a></div>
+      {% endfor %}
+  {% endif %}
+{% endblock %}

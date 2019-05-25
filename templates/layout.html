@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="container">
+          <ul>
+            <li class="nav-item">
+              <a href="/" class="badge badge-pill badge-primary">Home</a>
+            </li>
+          {% if session.log %}
+            <li class="nav-item">
+              <a href="/logout" class="badge badge-pill badge-primary">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a href="{{url_for('register')}}" class="badge badge-pill badge-primary">Register</a>
+            </li>
+            <li class="nav-item">
+            <a href="{{url_for('login')}}" class="badge badge-pill badge-primary">Login</a>
+            </li>
+          {% endif %}
+          </ul>
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

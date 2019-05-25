@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Review
+{% endblock %}
+
+{% block body %}
+  <h1 class="text-center">Welcome to Book Review!</h1>
+  <hr>
+
+{% if session.log %}
+<form action="/search" method="get">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Book Title / Author / IBSN" aria-label="Book Title / Author / IBSN" aria-describedby="basic-addon2" name="input">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
+</form>
+    {% for book in books %}
+<div class="list-group">
+    <a href='/book/{{books.isbn}}' class="list-group-item list-group-item-action">
+        <h5 class='text-primary'>{{books.title}}</h5>
+         by {{books.author}} in {{books.year}}
+         <h6 class='float-right'>isbn: {{books.isbn}}</h6></a>
+</div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
