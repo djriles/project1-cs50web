@@ -5,19 +5,22 @@
 {% endblock %}
 
 {% block body %}
+<div class="cover-container h-100 p-3 mx-auto bg-dark" >
 <h1 class="text-center">Search Results: </h1>
-<hr>
+</div>
+
   {% for book in books %}
-      <div class="card border-primary mb-3" style="width: 12rem">
-          <div class="card-body">
-              <h4 class="card-title">{{book['title']}}</h4>
-              <h6 class="card-text">{{book['author']}}</h6>
-              <h6 class="card-text">{{book['year']}}</h6>
-              <h6 class="card-text">{{book['isbn']}}</h6>
-          </div>
-          <div class="card-footer">
-              <a href="/book/{{book['isbn']}}" class="card-link">Go to book page</a>
-          </div>
+  <div class="cover-container w-75 p-3 mx-auto bg-dark text-dark">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3 class="card-title">{{book['title']}}</h3>
+          <h6 class="card-text">{{book['author']}}</h6>
+          <h6 class="card-text">{{book['year']}}</h6>
+          <h6 class="card-text">{{book['isbn']}}</h6>
+          <a href="/book/{{book['isbn']}}" class="btn btn-primary">Go to book page</a>
+        </div>
       </div>
+    </div>
+
   {% endfor %}
 {% endblock %}

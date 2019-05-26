@@ -5,22 +5,30 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Register</h1>
-    <hr>
-    <form action="{{url_for('register')}}" method="post">
-      <div class="form-group">
-        <label for="formGroupExampleInput">User Name</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="User Name" name="user_name" required>
-        <small id="emailHelp" class="form-text text-muted">eg. amy123</small>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="user_password" required>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Confirm Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" name="confirm_user_password" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <div class="cover-container h-100 p-3 mx-auto bg-dark" >
+      <h1 class="text-center">Register</h1>
+
+      <form action="{{url_for('register')}}" method="post">
+        <div class="form-group">
+          <label for="formGroupExampleInput">User Name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="User Name" name="user_name" required>
+          <small id="emailHelp" class="form-text text-muted">eg. amy123</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="user_password" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Confirm Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" name="confirm_user_password" required>
+        </div>
+
+ <!-- center the button-->
+ 
+        <div class="text-center cover-container h-100 p-3 mx-auto">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+        </div>
+
+      </form>
+    </div>
 {% endblock %}

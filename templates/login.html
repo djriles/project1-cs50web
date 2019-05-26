@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block body %}
+    <div class="cover-container h-100 p-3 mx-auto bg-dark" >
+
     <h1 class="text-center">Login</h1>
     <hr>
     <form action="{{url_for('login')}}" method="post">
@@ -17,7 +19,13 @@
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="user_password" required>
       </div>
+
+      <div class="text-center cover-container h-100 p-3 mx-auto">
       <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+
     </form>
+
+    </div>
 
 {% endblock %}

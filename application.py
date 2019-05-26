@@ -81,10 +81,13 @@ def api(isbn):
     book = db.execute("SELECT * FROM books WHERE isbn = :isbn", {"isbn":isbn}).fetchone()
     if book==None:
         return render_template('error.html', message="No results")
+
+    #python requests library (api)
     res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "8AxkJ7H3Zk1zWPKuO73r4A", "isbns": isbn})
     average_rating=res.json()['books'][0]['average_rating']
     work_ratings_count=res.json()['books'][0]['work_ratings_count']
 
+    #create own API (JSON)
     book = {
     "title": book.title,
     "author": book.author,
@@ -132,7 +135,7 @@ def login():
             for user in user_password_data:
                 if sha256_crypt.verify(session['user_password'], user):
                     session["log"] = True
-                    return render_template("success.html", message="login successful")
+                    return render_template("index.html")
                 else:
                     return render_template("error.html", message="wrong password")
     return render_template("login.html")

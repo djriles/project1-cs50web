@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Success</h1>
-    {{ message }}
+    <h1 class="text-center">Success</h1>
+    <h4 class="text-center">{{ message }}</h4>
+
+    <p class="lead text-center cover-container h-100 p-3 mx-auto">
+      <a href="{{url_for('login')}}" class="btn btn-lg btn-secondary">Log In Now</a>
+    </p>
 {% endblock %}

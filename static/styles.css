@@ -1,0 +1,14 @@
+.nav-link, .navbar-brand {
+  margin: 10px 15px 10px 15px;
+  font-size: 18px;
+}
+
+main {
+  font-family: Verdana, sans-serif;
+  line-height: 40px;
+  margin: 50px auto 20px auto;
+}
+
+.form-group {
+  margin: 20px 500px;
+}
